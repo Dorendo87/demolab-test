@@ -1,0 +1,70 @@
+Install Python
+# yum install gcc openssl-devel bzip2-devel libffi-devel
+# cd /opt
+# wget https://www.python.org/ftp/python/3.8.7/Python-3.8.7.tgz
+# tar xzf Python-3.8.7.tgz 
+# cd Python-3.8.7/
+# sudo ./configure --enable-optimizations
+# sudo make altinstall
+# python3.8 -V
+
+Create virtualenv
+# python3.8 -m venv venv
+# source venv/bin/activate
+# pip3.8 install flask
+# pip3.8 install pip install mysql-connector-python
+
+Install MySQL
+# rpm -ivh https://dev.mysql.com/get/mysql80-community-release-el8-1.noarch.rpm
+# dnf repolist all | grep mysql | grep enabled
+# dnf install -y --disablerepo=rhel-8-for-x86_64-appstream-rpms mysql-community-server
+# systemctl start mysqld
+# systemctl enable mysqld
+# systemctl status mysqld
+# cat /var/log/mysqld.log | grep -i 'temporary password'
+# mysql_secure_installation
+# mysql -u root -p
+Abc123##
+mysql> CREATE DATABASE exercisedb;
+mysql> CREATE TABLE IF NOT EXISTS exercisedb.exercises(
+  inputdate varchar(255) NOT NULL PRIMARY KEY,
+  distance FLOAT,
+  pace FLOAT,
+  calories FLOAT
+);
+mysql> show tables;
+Insert data in source/InsertData into exercisedb.exercises
+mysql> select use * from exercisedb.exercises;
+mysql> exit
+
+# cd /source/Entity_ET/app/src
+# python3.8 start.py
+
+------------------------
+# mysql -u root -p
+Abc123##
+
+mysql> CREATE TABLE IF NOT EXISTS exercisedb.clientdemo(
+    -> accountid FLOAT NOT NULL PRIMARY KEY,
+    -> name varchar(255),
+    -> balance FLOAT,
+    -> type varchar(255)
+    -> );
+mysql> use exercisedb
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> use exercisedb;
+Database changed
+mysql> show tables;
++----------------------+
+| Tables_in_exercisedb |
++----------------------+
+| clientdemo           |
+| exercises            |
++----------------------+
+2 rows in set (0.00 sec)
+
+INSERT INTO exercisedb.clientdemo (accountid, name, balance, type)
+VALUES (1003, "Azizul Awang", 4999999, "Saving");

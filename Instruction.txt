@@ -1,0 +1,22 @@
+pip install mysql-connector-python
+
+cd /c/Users/sze-mun.foo/Workshop/Cisco
+py -3 -m venv venv
+source venv/scripts/activate
+cd into the python script dir
+python start.py
+
+1. How to run using docker commands:
+$ docker image build . --tag jf00/eims:latest
+$ docker image ls
+$ docker container run --publish 5001:5000/tcp --mount type=bind,source="$(pwd)"/src,target=/src zm00/eims
+$ docker container stop 6534bf928dc1
+$ $ docker rmi -f 65d21690b7bf 2caaa0e9feab
+
+kubectl scale deployment.v1.apps/nginx-deployment --replicas=10
+
+
+2. How to run using docker compose command:
+$ docker-compose up
+$ docker-compose down
+$ docker-compose images
