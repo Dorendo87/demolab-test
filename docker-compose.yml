@@ -6,17 +6,24 @@ version: "3"
 services:
   db-service:
     build: "./db"
-    image: "ntt-image/ms_db_nttmy:1.0"
+    image: "shahril1987/ms_db_nttmy:2.2"
+    command: --default-authentication-plugin=mysql_native_password
     restart: always
     ports:
-      - "3308:3306"
-    environment:
-      MYSQL_DATABASE: exercisedb
-      MYSQL_ROOT_PASSWORD: abc123
+      - "3306:3306"
+    expose:
+      - "3306"
+  #  env_file:
+  #    - test.env
+ #   environment:
+ #     MYSQL_ROOT_PASSWORD: abc123
+ #     MYSQL_DATABASE: exercisedb
+ #     MYSQL_USER: shahril
+ #     MYSQL_PASSWORD: abc123
 
   app:
     build: "./app"
-    image: "ntt-image/ms_app_nttmy:1.0"
+    image: "shahril1987/ms_app_nttmy:2.0"
     ports:
       - "5000:5000/tcp"
     links:
@@ -27,14 +34,14 @@ services:
 
   pltform:
     build: "./pltform"
-    image: "ntt-image/ms_pltform_nttmy:1.0"
+    image: "shahril1987/ms_pltform_nttmy:1.0"
     ports:
       - "5001:5001/tcp"
     restart: on-failure
 
   nginx:
     build: ./nginx
-    image: "ntt-image/ms_nginx_nttmy:1.0"
+    image: "shahril1987/ms_nginx_nttmy:1.0"
     ports:
       - "8080:80"
     depends_on:
@@ -44,7 +51,7 @@ services:
   frontend:
     restart: always
     build: ./frontend
-    image: "ntt-image/ms_frontend_nttmy:1.0"
+    image: "shahril1987/ms_frontend_nttmy:1.0"
     ports:
       - '3000:3000'
 ...
